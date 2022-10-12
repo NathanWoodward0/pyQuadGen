@@ -12,3 +12,10 @@ Then enter your answer with up to 3 digits after the decimal.
 If there are two roots enter your answer separated by a space.
 
 Have fun solving! I plan on converting this into JS and implementing this into a web interactable version so the visuals are nicer.
+
+There's a problem right now where on difficulties 1 & 2 the answers will almost include a 1 or 2 so there is absolutely no challenge.
+Ex. 2x^2 + 38x + 36 | Answer: -1 & -18
+Ex. 1x^2 + 7x + 10 | Answer : -5 & -2
+I did a test run of 5 problems on difficulty 1 and all the answers had a 1 or 2 which shouldn't be the case.
+This is because they are the most common answers and the number generator for difficulty 1 & 2 runs until the answers have no decimals. 
+Since the most common answers will have a 1 or 2 the problems with these answers are generatred the most often.
