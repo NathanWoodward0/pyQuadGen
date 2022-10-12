@@ -8,5 +8,7 @@ First choose a difficulty:
   4: coefficients are always between 100 and 1000, the quadratic formula should be used
 
 Next choose how many problems you want to solve (this is capped at 50).
-Then enter your answer with up to 3 digits after the decimal
-If there are two roots enter your answer separated by a space
+Then enter your answer with up to 3 digits after the decimal.
+If there are two roots enter your answer separated by a space.
+
+Have fun solving! I plan on converting this into JS and implementing this into a web interactable version so the visuals are nicer.
