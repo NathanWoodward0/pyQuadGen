@@ -52,7 +52,7 @@ while True:
         a_min = 100
         b_min = 100
         c_min = 100
-        
+
         a_max = 1000
         b_max = 1000
         c_max = 1000
@@ -79,10 +79,7 @@ while True:
                 else:
                     break
 
-            
-
         eq = str(a) + "x^2 + " + str(b) + "x + " + str(c)
-        print(answer)
         print(eq)
 
         while True:
@@ -93,20 +90,19 @@ while True:
                 print("You entered too many numbers")
             else:
                 break
-            
+
         if len(guess) == 1:
             guess.append(guess[0])
         for x in range(0, len(guess)):
             guess[x] = float(guess[x])
                         
-
         if (guess[0] == answer[0] and guess[1] == answer[1]) or (guess[0] == answer[1] and guess[1] == answer[0]):
             print("\nCongratulations! You got it right!")
         elif guess[0] == answer[0] or guess[0]==answer[1] or guess[1] == answer[1] or guess[1] == answer[0]:
             print("\nNice try, you got the one root correct but the other root wrong")
         else:
             print("\nNice try but you got it wrong")
-        if determinant > 0:  
+        if determinant > 0:
             print("There are two roots:")
             print("x1 = " + str(answer[0]))
             print("x2 = " + str(answer[1]))
