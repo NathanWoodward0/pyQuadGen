@@ -1,12 +1,17 @@
 import random
 
-def is_int(element: str) -> bool: #function to determine if an input can be converted to an integer
+def is_float(element: str) -> bool: #function to determine if an input can be converted to an integer
     try:
-        int(element)
+        float(element)
         return True
     except ValueError:
         return False
 
+problem_num = 0
+
+print("INSTRUCTIONS: \nEnter your answer with up to 3 digits after the decimal")
+print("If there are two roots enter your answer separated by a space")
+print("When entering your answer, enter 'a' to skip the question and see the answer")
 while True: #system while loop, can continue creating and solving problems if wanted
     while True: #difficulty selection loop
         print("\n1: coefficient 'a' always equals 1, coefficients 'b' & 'c' don't exceed 50, no need for the quadratic formula")
@@ -14,7 +19,7 @@ while True: #system while loop, can continue creating and solving problems if wa
         print("3: coefficients don't exceed 100, the quadratic formula should be used")
         print("4: coefficients are always between 100 and 1000, the quadratic formula should be used")
         difficulty = input("Select a difficulty: ")
-        if not is_int(difficulty): #if they didn't enter a number
+        if not is_float(difficulty): #if they didn't enter a number
             print("\nInvalid selection\n")
         else:
             difficulty = int(difficulty)
@@ -23,16 +28,6 @@ while True: #system while loop, can continue creating and solving problems if wa
             else:
                 break
 
-    while True: #amount of problem selection loop
-        num_problems = input("How many problems would you like (choose less than 50): ")
-        if not is_int(num_problems):
-            print("\nInvalid selection\n")
-        else:
-            num_problems = int(num_problems)
-            if num_problems > 50:
-                print("\nInvalid selection\n")
-            else:
-                break
     a_max = 1
     b_max = 50
     c_max = 50
@@ -58,11 +53,9 @@ while True: #system while loop, can continue creating and solving problems if wa
     if difficulty == 1:
         a_min = 1
 
-
-    print("\nINSTRUCTIONS: \nEnter your answer with up to 3 digits after the decimal")
-    print("If there are two roots enter your answer separated by a space")
-
-    for problem_num in range(1, num_problems+1): #problem solving loop
+    change_difficulty = 0
+    while True: #problem solving loop
+        problem_num+=1
         print("\nProblem Number " + str(problem_num) + "\n")
         while True: #equation gen loop
             while True: #coefficient gen loop
@@ -92,20 +85,29 @@ while True: #system while loop, can continue creating and solving problems if wa
         elif c < 0:
             eq = str(a) + "x^2 + " + str(b) + "x - " + str(abs(c))
         print(eq)
+        guess_num = 0
         while True: #loop for continued guessing (if you get it wrong you can try again)
             while True: #loop for checking valid guesses
-                guess = input("Enter your answer: ").split()
+                guess_num+=1
+                if guess_num == 1:
+                    guess = input("Enter your answer: ").split()
+                else:
+                    guess = input("Enter your answer (enter 'a' to see the answer): ").split()
+                if guess[0] == "a":
+                    break
+                if len(guess) == 1: #if there is only one guess, append it to the list so there is 2 indexes
+                    guess.append(guess[0])
                 if len(guess) == 0:
                     print("You didn't enter an answer")
                 elif len(guess) > 2:
                     print("You entered too many numbers")
-                elif not is_int(guess[0]) or not is_int(guess[1]):
+                elif not is_float(guess[0]) or not is_float(guess[1]):
                     print("Invalid guess (not a number)")
                 else:
                     break
 
-            if len(guess) == 1: #if there is only one guess, append it to the list so there is 2 indexes
-                guess.append(guess[0])
+            if guess[0] == "a":
+                break
 
             for x in range(0, len(guess)): #convert all indices to floats
                 guess[x] = float(guess[x])
@@ -118,9 +120,6 @@ while True: #system while loop, can continue creating and solving problems if wa
             else:
                 print("\nNice try but you got it wrong")
 
-            if not input("Enter 1 to guess again; Enter anything else to see the answer: ") == "1":
-                break
-
         if determinant > 0:
             print("There are two roots:")
             print("x1 = " + str(answer[0]))
@@ -129,5 +128,11 @@ while True: #system while loop, can continue creating and solving problems if wa
             print("There is one root:")
             print("x = " + str(answer[0]))
 
-    if not input("\nEnter 1 to go again (anything else to quit): ") == "1":
+        change = input("\nEnter 1 to solve another problem\nEnter 2 to change difficulty (anything else to quit): ")
+        if change == "2":
+            change_difficulty = 1
+            break
+        elif not change == "1":
+            break
+    if not change_difficulty:
         break
