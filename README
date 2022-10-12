@@ -1,0 +1,12 @@
+I made this project to practice both python and my quadratic equation solving skills.
+Once the file in run, the instructions are self-explanatory.
+
+First choose a difficulty:
+  1: coefficient 'a' always equals 1, coefficients 'b' & 'c' don't exceed 50, no need for the quadratic formula
+  2: coefficient 'a' doesn't exceed 10, coefficients 'b' & 'c' don't exceed 100, no need for the quadratic formula
+  3: coefficients don't exceed 100, the quadratic formula should be used
+  4: coefficients are always between 100 and 1000, the quadratic formula should be used
+
+Next choose how many problems you want to solve (this is capped at 50).
+Then enter your answer with up to 3 digits after the decimal
+If there are two roots enter your answer separated by a space
